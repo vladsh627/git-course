@@ -1,0 +1,61 @@
+# Налаштування SSH для GitHub
+
+## 1️. Генерація SSH-ключа локально
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+*(Замініть `your_email@example.com` на вашу електронну пошту GitHub.)*
+
+- Коли з'явиться запит **"Enter file in which to save the key"**, натисніть **Enter**, щоб зберегти ключ у стандартному розташуванні (`~/.ssh/id_ed25519`).  
+- Коли з'явиться запит на **парольну фразу**, можете або встановити її, або натиснути **Enter**, щоб залишити поле порожнім.
+
+---
+
+## 2️. Додавання SSH-ключа до агента SSH
+Запустіть SSH-агент:
+```bash
+eval "$(ssh-agent -s)"
+```
+Потім додайте свій SSH-ключ:
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+
+---
+
+## 3️. Копіювання SSH-ключа
+Отримайте публічний ключ:
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+Скопіюйте ключ.
+
+---
+
+## 4. Додавання SSH-ключа до GitHub
+1. Перейдіть у [GitHub SSH Keys](https://github.com/settings/keys).
+2. Натисніть **"New SSH Key"**.
+3. У полі **"Title"** введіть щось на кшталт `"Мій ноутбук SSH Key"`.
+4. У полі **"Key"** вставте скопійований ключ.
+5. Натисніть **"Add SSH Key"**.
+
+---
+
+## 5️. Тестування з'єднання по SSH
+Виконайте команду:
+```bash
+ssh -T git@github.com
+```
+Якщо все працює, ви побачите:
+```
+Hi <your-github-username>! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+---
+
+## 6️. Відправка змін на GitHub
+Спробуйте виконати команду push:
+```bash
+git push origin main
+```
