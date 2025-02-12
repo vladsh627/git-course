@@ -16,6 +16,7 @@
 
 * Шпаргалка для користувачів Git – https://education.github.com/git-cheat-sheet-education.pdf
 * Шпаргалка для форматування README.md – https://www.markdownguide.org/cheat-sheet/
+* Емодзі для README.md - https://dev.to/nikolab/complete-list-of-github-markdown-emoji-markup-5aia
 
 ## Тренажери
 
